@@ -1,14 +1,12 @@
-// let userNumber = prompt("give me number");
 
-document.querySelector("#tabBtn").addEventListener("click", createTab);
+document.getElementById("tabBtn").addEventListener("click", createTab);
     
-// let userNum = 
 function createTab() {
-   let userNumber = document.querySelector("#tabInp").value;
+   let userNumber = document.getElementById("tabInp").value;
    let userArr = arrayTable(userNumber);
-   let table = document.querySelector("#table");
+   let table = document.getElementById("table");
+   table.innerHTML = "";
    
-
    for (let i = 0; i < userArr.length; i++) {
        let tr = document.createElement('tr');
 
@@ -24,7 +22,6 @@ function createTab() {
 let x = createTab();
 console.log(x);
 
-
 function arrayTable( num ) {
     const row = Math.ceil(Math.sqrt(num));
     const col = row;
@@ -32,7 +29,6 @@ function arrayTable( num ) {
     let start = 1;
 
     //creating an array 
-
     for(let i = 0; i < row; i++) {
         newArray[i] = new Array(col);
 
@@ -40,10 +36,8 @@ function arrayTable( num ) {
             newArray[i][j] = "";
         }
     } 
-
         let k, z, y;
         for (k = 0, z = 1, y = 2; k < Math.ceil(row/2), start <= num; k++, z++, y++) {
-
             //top loop 
             for (let i = k; i < z; i++) {
 
@@ -51,7 +45,6 @@ function arrayTable( num ) {
                     newArray[i][j] = start++;
                 }
             }
-            
             //right loop
             for (let j = col - z; j < col -k; j++) {
 
@@ -59,7 +52,6 @@ function arrayTable( num ) {
                 newArray[i][j] = start++;
                 }
             }
-
             //bottom loop
             for (let i = col - z; i > col - y; i--) {
 
@@ -67,7 +59,6 @@ function arrayTable( num ) {
                     newArray[i][j] = start++;
                 }
             }
-
             //left loop
             for (let j = k; j < z; j++) {
 
