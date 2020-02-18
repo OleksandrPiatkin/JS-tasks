@@ -1,4 +1,4 @@
-const text = `Городничий. Я пригласил вас, господа, с тем чтобы сообщить вам пренеприятное известие: к нам едет ревизор.
+const rolesText = `Городничий. Я пригласил вас, господа, с тем чтобы сообщить вам пренеприятное известие: к нам едет ревизор.
 Аммос Федорович. Как ревизор?
 Артемий Филиппович. Как ревизор?
 Городничий. Ревизор из Петербурга, инкогнито. И еще с секретным предписаньем.
@@ -7,23 +7,22 @@ const text = `Городничий. Я пригласил вас, господа
 Лука Лукич. Господи Боже! еще и с секретным предписаньем!`;
 
 const actorNames = [ 'Городничий', 'Аммос Федорович', 'Лука Лукич' ];
-const sepText= text.split('\n');
+const sptiedText = rolesText.split('\n');
 
-let test  = setRoleText2(actorNames);
-console.log('testing tne 2d funct\n', test);
+let outPut  = setActorsText(actorNames);
+console.log('Output of actors\n', outPut);
 
-function setRoleText2(names) { 
-    let outPut = '';
+function setActorsText(names) { 
+    let actorsText = '';
     names.forEach((item) => {
-        outPut = `${outPut}${item}\n${setRoleText(item)}\n`;
+        actorsText = `${actorsText}${item}\n${setRoleText(item)}\n`;
     });
-    return outPut;
+    return actorsText;
 }
 
 function setRoleText(name) {
-
     let actorText = '';
-    sepText.forEach(( item, index ) => {
+    sptiedText.forEach(( item, index ) => {
         if (item.indexOf(name) >= 0) { 
             actorText = `${actorText}${index + 1})${item.slice(name.length + 1)}\n`;
          }
