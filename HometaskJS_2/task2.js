@@ -1,4 +1,4 @@
-const filtredByRevievs = obj.sort((a, b) => {
+const filtredByRevievs = obj1.sort((a, b) => {
 
     const cutIndexA = a.ratingRevievs.indexOf(' ');
     const cutIndexB = b.ratingRevievs.indexOf(' ');
@@ -10,8 +10,11 @@ const filtredByRevievs = obj.sort((a, b) => {
 });
 
 console.log('filtred By Revievs Obj\n', filtredByRevievs);
-  
-const filtredByPrice = obj.sort((a, b) => {
+
+let odj1 = obj;
+let odj2 = obj;
+
+const filtredByPrice = obj2.sort((a, b) => {
 
   const checkPrice = obj => typeof obj.price === 'object' ? obj.price.newUan : obj.price;
 
