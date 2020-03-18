@@ -1,8 +1,8 @@
 const c = document.getElementById("canvas");
 const f = document.getElementById("field");
 
-let height = 500;
-let width = 700;
+const height = 500;
+const width = 700;
 
 let arr = [];
 
@@ -16,6 +16,7 @@ class BasicChar {
         this.speedY = 1 - this.speedX;
         this.flagX = false;
         this.flagY = false;
+        arr.push(this);
     }
     randNum = () => Math.round(Math.random() * 255)
 }
@@ -29,7 +30,7 @@ class Circle extends BasicChar {
     }
 
     animate() {
-        let ctx = c.getContext("2d");
+        const ctx = c.getContext("2d");
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
         ctx.fillStyle = this.color;
@@ -60,8 +61,9 @@ class Box extends BasicChar {
         this.name = "Box";
     }
 
+
     animate() {
-        let ctx = c.getContext("2d");
+        const ctx = c.getContext("2d");
         ctx.beginPath();
         ctx.rect(this.x, this.y, this.side, this.side);
         ctx.fillStyle = this.color;
@@ -83,50 +85,46 @@ class Box extends BasicChar {
     }
 }
 
-function createCircle() {
-    let circle = new Circle();
-    arr.push(circle);
-}
-function createBox() {
-    let box = new Box();
-    arr.push(box);
-}
 
 let i = 0;
-let createInterval = setInterval(() => {
+
+const timerId = setInterval(() => {
     if (i % 2 == 0) {
-        createCircle();
-        i++;
+        new Circle();
     } else {
-        createBox();
-        i++;
+        new Box();
     }
+    i++;
     if (i > 19) {
-        clearInterval(createInterval);
+        clearInterval(timerId);
     }
     createTableItems();
 }, 5000);
 
-let animationInterval = setInterval(() => {
-    let ctx = c.getContext("2d");
+const animationInterval = setInterval(() => {
+    const ctx = c.getContext("2d");
     ctx.clearRect(0, 0, width, height);
     arr.forEach(circle => circle.animate());
 }, 5);
 
 function createTableItems() {
-    let table = document.getElementById("table");
-    let trFigure = document.createElement("tr");
+    const table = document.getElementById("table");
+    const trFigure = document.createElement("tr");
     table.appendChild(trFigure);
 
-    let trNum = document.createElement("td");
+    const trNum = document.createElement("td");
     trNum.innerHTML = i;
     trFigure.appendChild(trNum);
 
-    let trType = document.createElement("td");
+    const trType = document.createElement("td");
     trType.innerHTML = arr[i - 1].name;
     trFigure.appendChild(trType);
 
-    let trSquare = document.createElement("td");
+    const trSquare = document.createElement("td");
     trSquare.innerHTML = arr[i - 1].sq;
     trFigure.appendChild(trSquare);
 }
+
+
+
+
